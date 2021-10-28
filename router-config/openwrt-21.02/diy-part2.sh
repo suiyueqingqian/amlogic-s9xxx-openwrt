@@ -30,8 +30,8 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 # Add luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk package/luci-app-amlogic
 
-# Add support for armvirt from lede
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/{autocore,luci-app-cpufreq,luci-app-rclone,rclone,rclone-ng,rclone-webui-react} package/lean
+# Add autocore, luci-app-cpufreq
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/{autocore,luci-app-cpufreq} package/lean
 sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
 
